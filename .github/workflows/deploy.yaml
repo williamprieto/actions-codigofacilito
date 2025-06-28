@@ -33,15 +33,24 @@ jobs:
       - name: obtener mensaje
         run: echo "${{ steps.step_1.outputs.my_variable }}"
 
-      - run: echo "Correr migraciones"
-      - run: echo "Generar binario"
-      - run: echo "Publicar version"
-      - run: echo "${{github.ref}}"
-      - run: echo "Variable de entorno NAME = $NAME "
+      - name: Generar archivo
+        run: |
+          echo "Archivo prueba" >> test.log
+
+      - name: subir archivo
+        uses: actions/upload-artifact@v4
+        with:
+          name: archivo-test
+          path: test.log
+
+      # - run: echo "Generar binario"
+      # - run: echo "Publicar version"
+      # - run: echo "${{github.ref}}"
+      # - run: echo "Variable de entorno NAME = $NAME "
       
 ##clase 2
   second_job:
-    #if: false activar o desactivar el job
+    if: false #activar o desactivar el job
     #if: ${{github.ref == 'refs/heads/main2'}}
     needs: deploy-codigofacilito
     runs-on: ubuntu-latest
