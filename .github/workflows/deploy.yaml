@@ -3,7 +3,6 @@ name: "Deploy CodigoFacilito"
 on:
   push:
     branches: ["main"]
-
 jobs:
   deploy-codigofacilito:
     runs-on: ubuntu-latest
@@ -17,13 +16,13 @@ jobs:
       - name: working dir
         run: ls -la
 
-      - name: Action             
+      - name: Action
         uses: actions/checkout@v4
               #Repositoriode quien creo la accion/nombre@version
       - name: working dir after action
         run: ls -la
 
-      - name: Visualizando archivo    
+      - name: Visualizando archivo
         run: echo $GITHUB_OUTPUT
 
       - name: Compartir valores entre jobs
@@ -60,5 +59,13 @@ jobs:
     steps:
       ##- uses: actions/checkout@v4
       #- run: echo "job 2"
-      - name: Visualizando valor    
+      - name: Visualizando valor
         run: echo $SALIDA
+
+      - name: Descargar Artefacto
+        uses: actions/download-artifact@v4
+        with:
+          name: archivo-test
+
+      - name: cat file
+        run: cat test.log
