@@ -7,12 +7,17 @@ on:
 jobs:
   deploy-codigofacilito:
     runs-on: ubuntu-latest
+    #variables de entorno
+    env:
+      NAME: CodigoFacilito
     steps:
       #- uses: actions/checkout@v4
       - run: echo "Hacemos pull del codigo"
       - run: echo "Correr migraciones"
       - run: echo "Generar binario"
       - run: echo "Publicar version"
+      - run: echo "${{github.ref}}"
+      - run: echo "Variable de entorno NAME = $NAME "
 ##clase 2
   second_job:
     #if: false activar o desactivar el job
