@@ -12,7 +12,9 @@ jobs:
       NAME: CodigoFacilito
     steps:
       #- uses: actions/checkout@v4
-      - run: echo "Hacemos pull del codigo"
+      - name: 1    
+        run: echo "Hacemos pull del codigo"
+        
       - run: echo "Correr migraciones"
       - run: echo "Generar binario"
       - run: echo "Publicar version"
