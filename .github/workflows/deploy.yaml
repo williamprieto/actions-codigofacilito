@@ -13,8 +13,10 @@ jobs:
       - run: echo "Correr migraciones"
       - run: echo "Generar binario"
       - run: echo "Publicar version"
-
+##clase 2
   second_job:
+    #if: false activar o desactivar el job
+    if: ${{github.ref == 'refs/heads/main2'}}
     needs: deploy-codigofacilito
     runs-on: ubuntu-latest
     steps:
