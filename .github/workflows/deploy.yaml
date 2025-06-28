@@ -17,7 +17,10 @@ jobs:
 
       - name: Action             
         uses: actions/checkout@v4
-              #Repositorio/nombre@version
+              #Repositoriode quien creo la accion/nombre@version
+      - name: working dir after action
+        run: ls -la
+
       - name: 1    
         run: echo "Hacemos pull del codigo"
 
