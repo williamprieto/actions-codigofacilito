@@ -7,6 +7,8 @@ on:
 jobs:
   deploy-codigofacilito:
     runs-on: ubuntu-latest
+    outputs:
+      salidaJob1: ${{ steps.step_1.outputs.my_variable }}
     #variables de entorno
     env:
       NAME: CodigoFacilito
@@ -43,6 +45,11 @@ jobs:
     #if: ${{github.ref == 'refs/heads/main2'}}
     needs: deploy-codigofacilito
     runs-on: ubuntu-latest
+        #variables de entorno
+    env:
+      SALIDA: ${{ needs.deploy-codigofacilito.outputs.salidaJob1}}
     steps:
-      #- uses: actions/checkout@v4
-      - run: echo "job 2"
+      ##- uses: actions/checkout@v4
+      #- run: echo "job 2"
+      - name: Visualizando valor    
+        run: echo $SALIDA
