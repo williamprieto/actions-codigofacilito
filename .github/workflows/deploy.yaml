@@ -49,7 +49,7 @@ jobs:
       
 ##clase 2
   second_job:
-    #if: false #activar o desactivar el job
+    if: false #activar o desactivar el job
     #if: ${{github.ref == 'refs/heads/main2'}}
     needs: deploy-codigofacilito
     runs-on: ubuntu-latest
@@ -69,3 +69,14 @@ jobs:
 
       - name: cat file
         run: cat test.log
+
+##clase 2
+## strategy el job se ejecuta 3 veces por la cantidad del arreglo definido
+  strategy_job:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        message: ["Hola","CodigoFacilito","Bootcamp github Actions"]
+    steps:
+      - name: Print mensaje
+        run: echo "${{ matrix.mensaje }}"
