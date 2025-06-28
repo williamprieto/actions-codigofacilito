@@ -79,4 +79,4 @@ jobs:
         message: ["Hola","CodigoFacilito","Bootcamp github Actions"]
     steps:
       - name: Print mensaje
-        run: echo "${{ matrix.mensaje }}"
+        run: echo "${{ matrix.message }}"
